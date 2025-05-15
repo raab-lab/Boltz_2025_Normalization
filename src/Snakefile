@@ -1,0 +1,44 @@
+from snakemake.utils import Paramspace
+import pandas as pd
+
+SS = pd.read_csv("/proj/jraablab/users/jlboltz/Normalization/snakefile_samples.csv").set_index("Sample", drop = False)
+
+
+rule all:
+    input:
+        expand("/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/{sample}_ecoli.alignment_stats.txt", sample=SS['Sample']), expand("/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/{sample}_ecoli.aligned.bam", sample=SS['Sample'])
+
+
+rule align_ecoli:
+	input:
+		genome="/proj/seq/data/Ecoli_K12_DH10B_ENSEMBL/Sequence/Bowtie2Index",
+		fq1="/proj/jraablab/users/jlboltz/Normalization/{sample}/qc/{sample}_val_1.fq.gz",
+		fq2="/proj/jraablab/users/jlboltz/Normalization/{sample}/qc/{sample}_val_2.fq.gz"
+
+	output:
+		stats="/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/{sample}_ecoli.alignment_stats.txt",
+		bam="/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/{sample}_ecoli.aligned.bam"
+	threads: 8
+	resources:
+		runtime='8h',
+		mem='4GB'
+	shell:
+		"""
+		module add bowtie2/2.3.4.1
+		module add samtools/1.16
+
+		bowtie2 \
+			-x {input.genome}/genome \
+			-p {threads} \
+			--very-sensitive-local \
+			--no-overlap \
+			--no-dovetail \
+			-X 800 \
+			-1 {input.fq1} \
+			-2 {input.fq2} \
+			2> {output.stats} |\
+			samtools view -b > {output.bam}
+
+		"""
+	
+
