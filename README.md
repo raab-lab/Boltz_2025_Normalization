@@ -1,11 +1,16 @@
 ## Normalization project
 1. CNR pipeline: cnr.sh
-2. CNR normalization: normalization.sh
-3. Spike-in: ecoli counts
-4. Spike-in: barcode counts
+Ran samples through Raab Lab CUT&RUN pipeline (cnr.sh)
+2. Spike-in: E. coli counts
+Counted the number of E. coli spike-in reads in each sample (Snakefile)
+3. Spike-in: barcode counts
+Counted number of synthetic DNA barcode spike-in reads in each sample (count_spikeint.sh followed by barcode_counts.R)
 5. Calculating Size Factors
-6. DESeq2 analysis
-7. Plots
+Manually calculated the size factors for the barcode spike-ins and E. coli spike-ins (size_factors.R)
+7. DESeq2 analysis
+Differential analysis done using each method of normalization (differential_binding.R)
+9. Plot data
+(log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
 ```
 project-template/
 ├── data
@@ -24,13 +29,7 @@ project-template/
 ├── renv.lock			<- For use with the `renv` package. Helps everyone stay in the same R environment
 ├── Snakefile			<- See above
 └── src				<- All code necessary to generate figures and derived data
-    ├── atac
-    │   └── clean_atac.R
     ├── cnr
     │   └── clean_cnr.R
     ├── create_canonical_sheet.R
-    ├── integrate
-    │   └── integrate.R
-    └── rna
-        └── clean_rna.R
 ```
