@@ -12,6 +12,7 @@ suppressPackageStartupMessages({
   library(Repitools)
   library(SummarizedExperiment)
 })
+################################################################################
 
 # load union peaks - these are regions of interested for Differential Occupancy
 k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed')
@@ -19,6 +20,7 @@ combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_d
 sf_barcodes <- as.vector(combined_data$sf_barcodes)
 sf_ecoli <- as.vector(combined_data$sf_ecoli)
 
+################################################################################
 
 #Write a function that takes a peak set and antibody and returns the DE object
 
