@@ -21,13 +21,13 @@ project-template/
 │   │   ├── cnr
 │   └── source_data		<- Here is where you should link in data from pipeline runs
 │       ├── cnr
+        ├── Snakefile	
 ├── figures			<- Any graphical outputs -- boxplots, scatterplots, etc
 │   ├── cnr
 ├── project-template.Rproj	<- Rename this to your project name
 ├── README.md
 ├── renv
 ├── renv.lock			<- For use with the `renv` package. Helps everyone stay in the same R environment
-├── Snakefile			<- See above
 └── src				<- All code necessary to generate figures and derived data
     ├── cnr
     │   └── clean_cnr.R
