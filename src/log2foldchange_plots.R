@@ -1,9 +1,11 @@
 # Plot Log2FoldChange
+
 library(readr)
 library(ggplot2)
 library(ggrepel)
 
 ################################################################################
+# load files and merge them
 
 k4me3_res_csaw <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_csaw.tsv')
 k4me3_res_barcodes <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_barcodes.tsv')
@@ -16,6 +18,7 @@ merged <- merge(x= as.data.frame(merged), y = as.data.frame(k4me3_res_ecoli), by
 write_tsv(merged |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalization/merged.tsv')
 
 ################################################################################
+# plot merged data
 
 # barcodes vs. csaw
 graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = rownames(merged), color = padj.x < 0.05 & padj.y < 0.05)) +
