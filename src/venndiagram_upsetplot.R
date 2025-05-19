@@ -3,7 +3,7 @@ library(VennDiagram)
 library(UpSetR)
 
 ################################################################################
-# Venn diagram
+# Venn diagram plot overlapping significant peaks
 merged <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/merged.tsv')
 
 merged_real <- na.omit(merged)
@@ -30,7 +30,7 @@ grid::grid.newpage()
 grid::grid.draw(venn.plot)
 
 ################################################################################
-# Upset plot
+# Upset plot for significant peaks
 
 pval_threshold <- 0.05
 
