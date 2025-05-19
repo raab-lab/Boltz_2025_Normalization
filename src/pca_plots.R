@@ -152,7 +152,7 @@ ggplot(k4me3_pca_barcodes, aes(PC1, PC2, label = k4me3_pca_barcodes$group, color
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 
-# ecoli
+# e. coli
 ggplot(k4me3_pca_ecoli, aes(PC1, PC2, label = k4me3_pca_ecoli$group, color = condition)) +
   geom_point(size = 4) +
   geom_text_repel(max.overlaps = 100) +
