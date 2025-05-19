@@ -10,7 +10,7 @@ Manually calculated the size factors for the barcode spike-ins and E. coli spike
 5. DESeq2 analysis:
    Differential analysis done using each method of normalization (differential_binding.R)
 6. Plot data:
-    (log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
+   (log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
 ```
 project-template/
 ├── data
