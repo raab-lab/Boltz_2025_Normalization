@@ -19,6 +19,9 @@ suppressPackageStartupMessages({
 
 ################################################################################
 
+# Write functions to calculate PCA
+
+# csaw method for normalization
 pca_cnr_csaw <- function(peaks, ab) {
   # get sample_sheet details
   samples <- read.csv('/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv') |> janitor::clean_names()
@@ -121,6 +124,8 @@ pca_cnr_spike_in <- function(peaks, ab, sf) {
 
 ################################################################################
 
+# apply functions using 3 different normalization methods
+
 k4me3_pca_csaw <- pca_cnr_csaw(k4me3, 'H3K4me3')
 percentVar_csaw <- round(100 * attr(k4me3_pca_csaw, "percentVar"))
 
@@ -131,7 +136,7 @@ k4me3_pca_ecoli <- pca_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli)
 percentVar_ecoli <- round(100 * attr(k4me3_pca_ecoli, "percentVar"))
 
 ################################################################################
-
+# graph PCA data
 # csaw
 ggplot(k4me3_pca_csaw, aes(PC1, PC2, label = k4me3_pca_csaw$group, color = condition)) +
   geom_point(size = 4) +
