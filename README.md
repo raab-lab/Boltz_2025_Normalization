@@ -1,7 +1,7 @@
 ## Normalization project
 1. CNR pipeline: 
 Ran samples through Raab Lab CUT&RUN pipeline (cnr.sh)
-2. Spike-in: E. coli counts
+2. Spike-in: E. coli counts  
 Counted the number of E. coli spike-in reads in each sample (Snakefile)
 3. Spike-in: barcode counts
 Counted number of synthetic DNA barcode spike-in reads in each sample (count_spikeint.sh followed by barcode_counts.R)
