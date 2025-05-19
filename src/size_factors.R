@@ -4,6 +4,8 @@ suppressPackageStartupMessages({
   library(tidyverse)
 })
 
+################################################################################
+
 # load ecoli and hlf alignments
 bams_ecoli <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/', pattern = paste0('ecoli.alignment_stats'), full.names = T)
 bams_hlf <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/bams', pattern = paste0('.alignment_stats'), full.names = T)
@@ -30,6 +32,8 @@ combined_data$HLF <- as.numeric(combined_data$HLF)
 combined_data$Ecoli <- as.numeric(combined_data$Ecoli)
 combined_data <- combined_data[c(-1, -4), ] # first and fourth sample had really low counts and were not used
 combined_data <- combined_data[order(combined_data$NGSID), ]
+
+################################################################################
 
 # calculate size factors
 combined_data$sf_barcodes <- ((combined_data$barcode_counts)/(combined_data$barcode_counts + combined_data$HLF + combined_data$Ecoli)) * 1000000
