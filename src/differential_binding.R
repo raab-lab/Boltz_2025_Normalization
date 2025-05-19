@@ -15,6 +15,7 @@ suppressPackageStartupMessages({
 ################################################################################
 
 # load union peaks - these are regions of interested for Differential Occupancy
+
 k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed')
 combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
 sf_barcodes <- as.vector(combined_data$sf_barcodes)
@@ -120,20 +121,24 @@ run_de_cnr_spike_in <- function(peaks, ab, sf) {
 }
 
 ################################################################################
-
+# Run functions
+# csaw method
 k4me3_des_csaw <- run_de_cnr_csaw(k4me3, 'H3K4me3')
 resultsNames(k4me3_des_csaw) # need to check coef needed here
 k4me3_res_csaw <- lfcShrink(k4me3_des_csaw, coef = 2, type = 'apeglm', format = 'GRanges')  
 
+# barcode spike-in method
 k4me3_des_barcodes <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes)
 resultsNames(k4me3_des_barcodes) # need to check coef needed here
 k4me3_res_barcodes <- lfcShrink(k4me3_des_barcodes, coef = 2, type = 'apeglm', format = 'GRanges') 
 
+# e. coli spike-in method
 k4me3_des_ecoli <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli)
 resultsNames(k4me3_des_ecoli) # need to check coef needed here
 k4me3_res_ecoli <- lfcShrink(k4me3_des_ecoli, coef = 2, type = 'apeglm', format = 'GRanges') 
 
 ################################################################################
+# Save data
 
 save(k4me3_des_csaw, k4me3_res_csaw, k4me3_des_barcodes, k4me3_res_barcodes, k4me3_des_ecoli, k4me3_res_ecoli, file = '/proj/jraablab/users/jlboltz/Normalization/cnr_peaks.Rda')
 write_tsv(k4me3_res_csaw |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalization/k4me3_res_csaw.tsv')
