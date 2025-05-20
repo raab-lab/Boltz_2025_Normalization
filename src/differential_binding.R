@@ -4,7 +4,7 @@ suppressPackageStartupMessages({
   library(csaw)
   library(plyranges)
   library(tidyverse)
-  library(DESeq2)  
+  library(DESeq2)   
   library(sva)
   library(janitor)
   library(readr)
