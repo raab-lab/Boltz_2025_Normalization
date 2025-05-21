@@ -38,7 +38,6 @@
 # EpiCypher considers an antibody with <20% binding to all off-target PTMs specific and suitable for downstream data analysis. 
 # For IgG, data is normalized to the sum of total barcode reads.
 
-
 # Barcode identities
 # Unmodified (A & B)
 # TTCGCGCGTAACGACGTACCGT 
@@ -105,7 +104,7 @@
 # TTTCGACGCGTCGATTCGGCGA
 
 
-# template loop begin ##
+# template loop begin 
 ## Expects Raab lab style sample sheet with Read 1 in the 8th column and Read 2 in the 9th
 
 SAMPLESHEET='/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv'
@@ -117,6 +116,3 @@ awk -F ',' 'NR>1{print $9}' $SAMPLESHEET  | \
 	parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R2_spikein_counts.txt
 
 # template loop end ##
-
-
-
