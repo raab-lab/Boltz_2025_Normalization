@@ -1,6 +1,7 @@
 from snakemake.utils import Paramspace
 import pandas as pd
 
+# snakefile sample sheet (first row: Sample, next rows the name of the samples)
 SS = pd.read_csv("/proj/jraablab/users/jlboltz/Normalization/snakefile_samples.csv").set_index("Sample", drop = False)
 
 
