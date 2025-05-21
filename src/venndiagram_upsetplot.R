@@ -7,11 +7,11 @@ library(UpSetR)
 merged <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/merged.tsv')
 
 merged_real <- na.omit(merged)
-set1 <- merged_real[merged_real$pvalue.x < 0.05, ]
+set1 <- merged_real[merged_real$padj.x < 0.05, ]
 set1 <- set1$start
-set2 <-  merged_real[merged_real$pvalue.y < 0.05, ]
+set2 <-  merged_real[merged_real$padj.y < 0.05, ]
 set2 <- set2$start
-set3 <-  merged_real[merged_real$pvalue < 0.05, ]
+set3 <-  merged_real[merged_real$padj < 0.05, ]
 set3 <- set3$start
 
 venn.plot <- venn.diagram(
@@ -32,14 +32,12 @@ grid::grid.draw(venn.plot)
 ################################################################################
 # Upset plot for significant peaks
 
-pval_threshold <- 0.05
-
 # Create a binary matrix for significant genes in each comparison
 upset_data <- data.frame(
   Gene = merged_real$start,
-  CSAW = as.integer(merged_real$pvalue.x < pval_threshold),
-  Barcodes = as.integer(merged_real$pvalue.y < pval_threshold),
-  Ecoli = as.integer(merged_real$pvalue < pval_threshold)
+  CSAW = as.integer(merged_real$padj.x < 0.05),
+  Barcodes = as.integer(merged_real$padj.y < 0.05),
+  Ecoli = as.integer(merged_real$padj < 0.05)
 )
 
 UpSetR::upset(upset_data, 
