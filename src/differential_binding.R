@@ -78,7 +78,7 @@ run_de_cnr_csaw <- function(peaks, ab) {
   return(dds)
 }
 
-# Uses spike in method for normalization
+# Uses spike in method for normalization, add in 'sf' which is the vector of calculated size factors
 
 run_de_cnr_spike_in <- function(peaks, ab, sf) {
   # get sample_sheet details
