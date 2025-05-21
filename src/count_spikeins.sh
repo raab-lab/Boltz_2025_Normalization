@@ -1,9 +1,9 @@
 #!/bin/bash
 ##########################################
-## Updated 14 AUG 2024 By Peyton Kuhlers
-## Raab Lab UNC
 # Written by Dr. Bryan Venters, EpiCypher Inc. 
 # Updated 29 OCT 2021
+## Updated 14 AUG 2024 By Peyton Kuhlers
+## Raab Lab UNC
 ##########################################
 
 # Barcode identities
@@ -74,6 +74,8 @@
 
 # template loop begin 
 ## Expects Raab lab style sample sheet with Read 1 in the 8th column and Read 2 in the 9th
+# can only run one of the R1/R2 at a time
+# the 'BARCODES' is a text file that just lists the above barcode sequences (just the sequences not the names, only one colum)
 
 SAMPLESHEET='/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv'
 BARCODES='/proj/jraablab/users/pkuhlers/seq_resources/spikein_barcodes.txt'
