@@ -124,17 +124,17 @@ run_de_cnr_spike_in <- function(peaks, ab, sf) {
 # Run functions
 # csaw method
 k4me3_des_csaw <- run_de_cnr_csaw(k4me3, 'H3K4me3')
-resultsNames(k4me3_des_csaw) # need to check coef needed here
+resultsNames(k4me3_des_csaw) 
 k4me3_res_csaw <- lfcShrink(k4me3_des_csaw, coef = 2, type = 'apeglm', format = 'GRanges')  
 
 # barcode spike-in method
 k4me3_des_barcodes <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes)
-resultsNames(k4me3_des_barcodes) # need to check coef needed here
+resultsNames(k4me3_des_barcodes) 
 k4me3_res_barcodes <- lfcShrink(k4me3_des_barcodes, coef = 2, type = 'apeglm', format = 'GRanges') 
 
 # e. coli spike-in method
 k4me3_des_ecoli <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli)
-resultsNames(k4me3_des_ecoli) # need to check coef needed here
+resultsNames(k4me3_des_ecoli) 
 k4me3_res_ecoli <- lfcShrink(k4me3_des_ecoli, coef = 2, type = 'apeglm', format = 'GRanges') 
 
 ################################################################################
