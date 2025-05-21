@@ -20,7 +20,7 @@ venn.plot <- venn.diagram(
     Barcodes = set2,
     Ecoli = set3
   ),
-  filename = NULL,  # So it plots directly
+  filename = NULL,
   fill = c("lightblue", "lightyellow", "maroon"),
   alpha = 0.5,
   cat.cex = 1.5,
