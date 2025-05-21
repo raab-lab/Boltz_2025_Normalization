@@ -8,7 +8,7 @@ merged <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/merged.tsv')
 
 merged_real <- na.omit(merged)
 set1 <- merged_real[merged_real$padj.x < 0.05, ]
-set1 <- set1$start
+set1 <- set1$start 
 set2 <-  merged_real[merged_real$padj.y < 0.05, ]
 set2 <- set2$start
 set3 <-  merged_real[merged_real$padj < 0.05, ]
