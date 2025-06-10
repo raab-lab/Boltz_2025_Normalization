@@ -80,7 +80,8 @@
 SAMPLESHEET='/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv'
 BARCODES='/proj/jraablab/users/pkuhlers/seq_resources/spikein_barcodes.txt'
 
-# awk -F ',' 'NR>1{print $8}' $SAMPLESHEET | \ parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R1_spikein_counts.txt
+awk -F ',' 'NR>1{print $8}' $SAMPLESHEET | \ 
+	parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R1_spikein_counts.txt
 
 awk -F ',' 'NR>1{print $9}' $SAMPLESHEET  | \
 	parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R2_spikein_counts.txt
