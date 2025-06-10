@@ -1,4 +1,4 @@
-# Plot Log2FoldChange
+# Plot Log2FoldChange between samples
 
 library(readr)
 library(ggplot2)
@@ -30,7 +30,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = 
   theme_minimal()
 graph
 
-# ecoli vs. csaw
+# e. coli vs. csaw
 graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = rownames(merged), color = padj.x < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of csaw normalization") +
@@ -40,7 +40,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = ro
   theme_minimal()
 graph
 
-# ecoli vs. barcodes
+# e. coli vs. barcodes
 graph <- ggplot(merged, aes(x = log2FoldChange.y, y = log2FoldChange, label = rownames(merged), color = padj.y < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of barcode spike-in normalization") +
