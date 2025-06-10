@@ -8,7 +8,7 @@ k4me3_res_ecoli <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_re
 
 ################################################################################
 
-# CSAW
+# CSAW 
 k4me3_des_csaw_shrink <- lfcShrink(k4me3_des_csaw, coef = 2, type = 'apeglm') 
 plotMA(k4me3_des_csaw_shrink, ylim = c(-5, 5), main = "CSAW MA Plot")
 
