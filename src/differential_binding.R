@@ -16,10 +16,10 @@ suppressPackageStartupMessages({
 
 # load union peaks - these are regions of interested for Differential Occupancy
 
-k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed')
+k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed') # union_bed made from peaks in all samples
 combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
-sf_barcodes <- as.vector(combined_data$sf_barcodes)
-sf_ecoli <- as.vector(combined_data$sf_ecoli)
+sf_barcodes <- as.vector(combined_data$sf_barcodes) # size factors for barcodes
+sf_ecoli <- as.vector(combined_data$sf_ecoli) # size factors for e. coli
 
 ################################################################################
 
