@@ -8,8 +8,8 @@ suppressPackageStartupMessages({
 
 # load e. coli and hlf alignments
 
-bams_ecoli <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/', pattern = paste0('ecoli.alignment_stats'), full.names = T)
-bams_hlf <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/bams', pattern = paste0('.alignment_stats'), full.names = T)
+align_ecoli <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/ecoli_alignments/', pattern = paste0('ecoli.alignment_stats'), full.names = T)
+align_hlf <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/bams', pattern = paste0('.alignment_stats'), full.names = T)
 
 load_csv <- function(bams, column_name) {
   df <- data.frame()
@@ -23,8 +23,8 @@ load_csv <- function(bams, column_name) {
   return(df)
 }
 
-ecoli <- load_csv(bams_ecoli, 'Ecoli')
-hlf <- load_csv(bams_hlf, 'HLF')
+ecoli <- load_csv(align_ecoli, 'Ecoli')
+hlf <- load_csv(align_hlf, 'HLF')
 barcodes <- read_csv('/proj/jraablab/users/jlboltz/Normalization/barcodes.csv')
   
 # combine into one data frame
@@ -32,7 +32,7 @@ barcodes <- read_csv('/proj/jraablab/users/jlboltz/Normalization/barcodes.csv')
 combined_data <- cbind(barcodes, hlf, ecoli)
 combined_data$HLF <- as.numeric(combined_data$HLF)
 combined_data$Ecoli <- as.numeric(combined_data$Ecoli)
-combined_data <- combined_data[c(-1, -4), ] # first and fourth sample had really low counts and were not used
+combined_data <- combined_data[c(-1, -4), ] # first and fourth sample had low counts and were not used
 combined_data <- combined_data[order(combined_data$NGSID), ]
 
 ################################################################################
