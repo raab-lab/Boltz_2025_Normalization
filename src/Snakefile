@@ -1,3 +1,4 @@
+# Align samples to e. coli genome to count e. coli spike-in reads
 from snakemake.utils import Paramspace
 import pandas as pd
 
