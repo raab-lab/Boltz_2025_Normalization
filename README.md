@@ -11,25 +11,4 @@ Manually calculated the size factors for the barcode spike-ins and E. coli spike
    Differential analysis done using each method of normalization (differential_binding.R)
 7. Plot data:
    (log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
-```
-project-template/
-├── data
-│   ├── derived_data		<- 'Final' analysis outputs, like differential binding/expression tables.
-│   │   ├── cnr
-│   ├── external		<- Location for potential public or non-pipeline processed data
-│   ├── processed_data		<- Intermediate datasets, like summarizedExperiment RDS files or consensus peak calls
-│   │   ├── cnr
-│   └── source_data		<- Here is where you should link in data from pipeline runs
-│       ├── cnr
-        ├── Snakefile	
-├── figures			<- Any graphical outputs -- boxplots, scatterplots, etc
-│   ├── cnr
-├── project-template.Rproj	<- Rename this to your project name
-├── README.md
-├── renv
-├── renv.lock			<- For use with the `renv` package. Helps everyone stay in the same R environment
-└── src				<- All code necessary to generate figures and derived data
-    ├── cnr
-    │   └── clean_cnr.R
-    ├── create_canonical_sheet.R
-```
+   
