@@ -1,5 +1,6 @@
-## Normalization project
-1. CNR pipeline: Ran samples through [Raab Lab CUT&RUN pipeline](https://github.com/raab-lab/cut-n-run)
+## Normalization code
+Pipeline:
+1. CUT&RUN data processing: Ran samples through [Raab Lab CUT&RUN pipeline](https://github.com/raab-lab/cut-n-run)
    (cnr.sh then normalize.sh)
 3. Spike-in E. coli counts:  
 Counted the number of E. coli spike-in reads in each sample (Snakefile)
