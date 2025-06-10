@@ -27,7 +27,6 @@ aligned_reads <- read.table("/proj/jraablab/users/jlboltz/Normalization/multiqc_
                             header = T) %>%
   mutate(NGSID = gsub("[0-9]+_(JR[0-9]{3})_.*", "\\1", Sample)) %>%
   dplyr::select(NGSID, total_reads, paired_aligned_one)
-barcodes <- read.table("/proj/jraablab/users/pkuhlers/seq_resources/spikein_barcodes.txt")
 spikein_reads <-
   read_spikeins(
     "/proj/jraablab/users/jlboltz/Normalization/R1_spikein_counts.txt",
