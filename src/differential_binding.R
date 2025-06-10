@@ -48,17 +48,16 @@ run_de_cnr_csaw <- function(peaks, ab) {
   n_exp <- length(unique(ss$experiment_i_id))
   print(n_exp)
   # CSAW Setup
-  param = readParam(pe = 'both', dedup = F, minq = 10) # set this to 10 which matches my bam parameters, higher and we lose some numbers
+  param = readParam(pe = 'both', dedup = F, minq = 10) # set this to 10 which matches the bam parameters, higher and we lose some numbers
   peak_counts <- regionCounts(bams, peaks, param = param)
   window_counts <- windowCounts(bams, bin = T, width = 10000) 
-  # normalize on the regions we've counted
+  # normalize on the regions counted
   
   # Need to set up some sort of sample sheet for comparison
   colData(peak_counts) <- DataFrame(left_join(as.data.frame(colData(peak_counts)), 
                                               ss, by = c('bam.files' ='filename') ) )
   colData(window_counts) <- DataFrame(left_join(as.data.frame(colData(window_counts)), 
                                                 ss, by= c('bam.files' = 'filename') ) )
-  
   # 
   if (n_exp > 1) {
     dds <- DESeqDataSet(peak_counts, design = ~  experiment_i_id + condition + rep) 
@@ -88,7 +87,7 @@ run_de_cnr_spike_in <- function(peaks, ab, sf) {
   samples <- samples |> dplyr::select(sample_number, experiment_id)
   
   # get bam files
-  bams <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/bams/filtered/', pattern = paste0(ab, '_*.*.bam$'), full.names = T)
+  bams <- list.files(path = '/proj/jraablab/users/jlboltz/Normalization/bams/filtered/', pattern = paste0(ab, '_*.*.bam$'), full.names = T) 
   print(bams)
   
   # Sample Sheet
