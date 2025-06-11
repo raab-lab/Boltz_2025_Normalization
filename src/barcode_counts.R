@@ -5,7 +5,7 @@ library(tidyr)
 library(readr)
 
 ################################################################################
-
+# function to read spike-in output
 read_spikeins <- function(r1, r2) {
   r1_reads <- read.table(r1, header = F,
                          col.names = c("barcode", "fastq", "nuc_reads")) %>%
@@ -23,10 +23,13 @@ read_spikeins <- function(r1, r2) {
   return(spikein_reads)
 }
 
+# load multiqc data
 aligned_reads <- read.table("/proj/jraablab/users/jlboltz/Normalization/multiqc_data/multiqc_bowtie2.txt",
                             header = T) %>%
   mutate(NGSID = gsub("[0-9]+_(JR[0-9]{3})_.*", "\\1", Sample)) %>%
   dplyr::select(NGSID, total_reads, paired_aligned_one)
+
+# output from count_spikeins.sh
 spikein_reads <-
   read_spikeins(
     "/proj/jraablab/users/jlboltz/Normalization/R1_spikein_counts.txt",
@@ -40,6 +43,7 @@ barcode_reads <- inner_join(spikein_reads,
   dplyr::select(NGSID, sequence = barcode, barcode = barcode.y, target, nuc_reads_r1, nuc_reads_r2) %>%
   mutate(tot_reads = nuc_reads_r1 + nuc_reads_r2)
 
+# select for barcode target of interest (i.e. H3K4me3)
 on_target <- barcode_reads %>%
   group_by(NGSID, target) %>%
   reframe(barcode_counts = sum(tot_reads)) %>%
@@ -52,4 +56,5 @@ barcodes <- subset(barcodes, select = c(NGSID, barcode_counts))
 
 barcodes
 
+# save
 write_csv(barcodes |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalization/barcodes.csv')
