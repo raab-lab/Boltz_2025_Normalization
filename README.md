@@ -10,4 +10,4 @@ Manually calculated the size factors for the barcode spike-ins and E. coli spike
 6. DESeq2 analysis:<br>
    Differential analysis done using each method of normalization ([differential_binding.R](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/differential_binding.R))
 7. Plot data:<br>
-   (log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
+   ([log2foldchange_plots.R](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/log2foldchange_plots.R), [ma_plots.R](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/ma_plots.R), [pca_plots.R](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/pca_plots.R), and [venndiagram_upsetplot.R](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/venndiagram_upsetplot.R))
