@@ -15,8 +15,9 @@ suppressPackageStartupMessages({
 ################################################################################
 
 # load union peaks - these are regions of interested for Differential Occupancy
-
 k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed') # union_bed made from peaks in all samples
+
+# load size factors for normalization
 combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
 sf_barcodes <- as.vector(combined_data$sf_barcodes) # size factors for barcodes
 sf_ecoli <- as.vector(combined_data$sf_ecoli) # size factors for e. coli
@@ -127,12 +128,12 @@ resultsNames(k4me3_des_csaw)
 k4me3_res_csaw <- lfcShrink(k4me3_des_csaw, coef = 2, type = 'apeglm', format = 'GRanges')  
 
 # barcode spike-in method
-k4me3_des_barcodes <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes)
+k4me3_des_barcodes <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes) # includes size factors
 resultsNames(k4me3_des_barcodes) 
 k4me3_res_barcodes <- lfcShrink(k4me3_des_barcodes, coef = 2, type = 'apeglm', format = 'GRanges') 
 
 # e. coli spike-in method
-k4me3_des_ecoli <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli)
+k4me3_des_ecoli <- run_de_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli) # includes size factors
 resultsNames(k4me3_des_ecoli) 
 k4me3_res_ecoli <- lfcShrink(k4me3_des_ecoli, coef = 2, type = 'apeglm', format = 'GRanges') 
 
