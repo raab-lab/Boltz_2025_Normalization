@@ -1,13 +1,13 @@
 ## Normalization code
 Process:
 1. CUT&RUN data processing: Ran samples through [Raab Lab CUT&RUN pipeline](https://github.com/raab-lab/cut-n-run)<br>([cnr.sh](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/cnr.sh) then normalize.sh)
-3. Spike-in E. coli counts:  
+3. Spike-in E. coli counts:  <br>
 Counted the number of E. coli spike-in reads in each sample (Snakefile)
-4. Spike-in barcode counts:
+4. Spike-in barcode counts:<br>
 Counted number of synthetic DNA barcode spike-in reads in each sample (count_spikeint.sh followed by barcode_counts.R)
-5. Calculating Size Factors:
+5. Calculating Size Factors:<br>
 Manually calculated the size factors for the barcode spike-ins and E. coli spike-ins (size_factors.R)
-6. DESeq2 analysis:
+6. DESeq2 analysis:<br>
    Differential analysis done using each method of normalization (differential_binding.R)
-7. Plot data:
+7. Plot data:<br>
    (log2foldchange_plots.R, ma_plots.R, pca_plots.R, and venndiagram_upsetplot.R)
