@@ -1,6 +1,6 @@
 ## Normalization code
 Process:
-1. CUT&RUN data processing: Ran samples through [Raab Lab CUT&RUN pipeline](https://github.com/raab-lab/cut-n-run)<br>([cnr.sh](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/cnr.sh) then normalize.sh)
+1. CUT&RUN data processing: Ran samples through [Raab Lab CUT&RUN pipeline](https://github.com/raab-lab/cut-n-run)<br>([cnr.sh](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/cnr.sh) then [normalize.sh](https://github.com/raab-lab/Boltz_2025_Normalization/blob/main/src/normalize.sh))
 3. Spike-in E. coli counts:  <br>
 Counted the number of E. coli spike-in reads in each sample (Snakefile)
 4. Spike-in barcode counts:<br>
