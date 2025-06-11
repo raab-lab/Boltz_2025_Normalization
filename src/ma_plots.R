@@ -16,6 +16,6 @@ plotMA(k4me3_des_csaw_shrink, ylim = c(-5, 5), main = "CSAW MA Plot")
 k4me3_des_barcodes_shrink <- lfcShrink(k4me3_des_barcodes, coef = 2, type = 'apeglm') 
 plotMA(k4me3_des_barcodes_shrink, ylim = c(-5, 5), main = "Barcodes MA Plot")
 
-# Ecoli
+# E. coli
 k4me3_des_ecoli_shrink <- lfcShrink(k4me3_des_ecoli, coef = 2, type = 'apeglm') 
 plotMA(k4me3_des_ecoli_shrink, ylim = c(-5, 5), main = "Ecoli MA Plot")
