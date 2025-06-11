@@ -71,7 +71,6 @@
 # CGATTCGACGGTCGCGACCGTA
 # TTTCGACGCGTCGATTCGGCGA
 
-
 # template loop begin 
 ## Expects Raab lab style sample sheet with Read 1 in the 8th column and Read 2 in the 9th
 # can only run one of the R1/R2 at a time
