@@ -43,4 +43,3 @@ combined_data$sf_barcodes <- ((combined_data$barcode_counts)/(combined_data$barc
 combined_data$sf_ecoli <- ((combined_data$Ecoli)/(combined_data$barcode_counts + combined_data$HLF + combined_data$Ecoli)) * 1000000
 
 write_csv(combined_data |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
-
