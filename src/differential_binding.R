@@ -1,5 +1,6 @@
 # cnr differential peaks with 3 different normalization methods
 # Author: Jesse Raab
+
 suppressPackageStartupMessages({
   library(csaw)
   library(plyranges)
