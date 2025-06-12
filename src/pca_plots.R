@@ -17,6 +17,16 @@ suppressPackageStartupMessages({
 
 ################################################################################
 
+# load union peaks
+k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed') # union_bed made from peaks in all samples
+
+# load size factors for normalization
+combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
+sf_barcodes <- as.vector(combined_data$sf_barcodes) # size factors for barcodes
+sf_ecoli <- as.vector(combined_data$sf_ecoli) # size factors for e. coli
+
+################################################################################
+
 # Write functions to calculate PCA
 
 # csaw method for normalization
@@ -33,7 +43,6 @@ pca_cnr_csaw <- function(peaks, ab) {
   
   # Sample Sheet
   ss <- data.frame(filename = bams, names = basename(bams))
-  
   ss <- ss |> 
     mutate(short_name = str_replace(names, '.aligned.bam', '') ) |> 
     separate(short_name, into = c('airtable_id', 'NGSID', 'cell_line', 'antibody', 'condition', 'rep'), sep = '_' ) 
@@ -89,8 +98,7 @@ pca_cnr_spike_in <- function(peaks, ab, sf) {
   print(bams)
   
   # Sample Sheet
-  ss <- data.frame(filename = bams, names = basename(bams))
-  
+  ss <- data.frame(filename = bams, names = basename(bams)) 
   ss <- ss |> 
     mutate(short_name = str_replace(names, '.aligned.bam', '') ) |> 
     separate(short_name, into = c('airtable_id', 'NGSID', 'cell_line', 'antibody', 'condition', 'rep'), sep = '_' ) 
