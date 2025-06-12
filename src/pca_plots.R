@@ -13,8 +13,6 @@ suppressPackageStartupMessages({
   library(SummarizedExperiment)
   library(ggplot2)
   library(ggrepel)
-  library(VennDiagram)
-  library(UpSetR)
 })
 
 ################################################################################
