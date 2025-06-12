@@ -11,7 +11,6 @@ k4me3_res_csaw <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res
 k4me3_res_barcodes <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_barcodes.tsv')
 k4me3_res_ecoli <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_ecoli.tsv')
 
-merged <- data.frame()
 merged <- merge(x= as.data.frame(k4me3_res_csaw), y = as.data.frame(k4me3_res_barcodes), by = "start")
 merged <- merge(x= as.data.frame(merged), y = as.data.frame(k4me3_res_ecoli), by = "start")
 
@@ -20,7 +19,7 @@ write_tsv(merged |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalizat
 ################################################################################
 # plot merged data
 
-# barcodes vs. csaw
+# barcodes vs. csaw method
 graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = rownames(merged), color = padj.x < 0.05 & padj.y < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of csaw normalization") +
@@ -30,7 +29,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = 
   theme_minimal()
 graph
 
-# e. coli vs. csaw
+# e. coli vs. csaw method
 graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = rownames(merged), color = padj.x < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of csaw normalization") +
@@ -40,7 +39,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = ro
   theme_minimal()
 graph
 
-# e. coli vs. barcodes
+# e. coli vs. barcodes method
 graph <- ggplot(merged, aes(x = log2FoldChange.y, y = log2FoldChange, label = rownames(merged), color = padj.y < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of barcode spike-in normalization") +
