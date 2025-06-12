@@ -25,7 +25,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = 
   xlab("log2FoldChange of csaw normalization") +
   ylab("log2FoldChange of barcode spike-in normalization") +
   scale_color_manual(values = c("black", "red")) +  # Significant adjusted p-values are red
-  ggtitle("log2FoldChange barcode vs. csaw") +
+  ggtitle("log2FoldChange barcode vs. csaw methods") +
   theme_minimal()
 graph
 
@@ -35,7 +35,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = ro
   xlab("log2FoldChange of csaw normalization") +
   ylab("log2FoldChange of ecoli spike-in normalization") +
   scale_color_manual(values = c("black", "red")) +  # Significant adjusted p-values are red
-  ggtitle("log2FoldChange ecoli vs. csaw") +
+  ggtitle("log2FoldChange ecoli vs. csaw methods") +
   theme_minimal()
 graph
 
@@ -45,6 +45,6 @@ graph <- ggplot(merged, aes(x = log2FoldChange.y, y = log2FoldChange, label = ro
   xlab("log2FoldChange of barcode spike-in normalization") +
   ylab("log2FoldChange of ecoli spike-in normalization") +
   scale_color_manual(values = c("black", "red")) +  # Significant adjusted p-values are red
-  ggtitle("log2FoldChange ecoli vs. barcodes") +
+  ggtitle("log2FoldChange ecoli vs. barcodes methods") +
   theme_minimal()
 graph
