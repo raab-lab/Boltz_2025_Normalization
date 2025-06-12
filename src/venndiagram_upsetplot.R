@@ -32,7 +32,7 @@ grid::grid.draw(venn.plot)
 ################################################################################
 # Upset plot for significant peaks
 
-# Create a binary matrix for significant genes in each comparison
+# Create a matrix for significant genes in each comparison
 upset_data <- data.frame(
   Gene = merged_real$start,
   CSAW = as.integer(merged_real$padj.x < 0.05),
