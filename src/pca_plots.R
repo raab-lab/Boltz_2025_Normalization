@@ -17,10 +17,10 @@ suppressPackageStartupMessages({
 
 ################################################################################
 
-# load union peaks
+# Load union peaks
 k4me3 <- read_bed('/proj/jraablab/users/jraab/menin-mll/data/derived_data/peak_sets/cnr_consensus/k4me3_union.bed') # union_bed made from peaks in all samples
 
-# load size factors for normalization
+# Load size factors for normalization
 combined_data <- read_csv('/proj/jraablab/users/jlboltz/Normalization/combined_data.csv')
 sf_barcodes <- as.vector(combined_data$sf_barcodes) # size factors for barcodes
 sf_ecoli <- as.vector(combined_data$sf_ecoli) # size factors for e. coli
@@ -29,7 +29,7 @@ sf_ecoli <- as.vector(combined_data$sf_ecoli) # size factors for e. coli
 
 # Write functions to calculate PCA
 
-# csaw method for normalization
+# Csaw method for normalization
 pca_cnr_csaw <- function(peaks, ab) {
   # get sample_sheet details
   samples <- read.csv('/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv') |> janitor::clean_names()
@@ -80,7 +80,6 @@ pca_cnr_csaw <- function(peaks, ab) {
   dds <- nbinomWaldTest(dds)
   vsd <- varianceStabilizingTransformation(dds, blind = TRUE)
   pca_data <- plotPCA(vsd, intgroup = c("condition", 'rep'), returnData = TRUE)
-  percentVar <- round(100 * attr(pca_data, "percentVar"))
   return(pca_data)
 }
 
@@ -124,7 +123,6 @@ pca_cnr_spike_in <- function(peaks, ab, sf) {
   dds <- nbinomWaldTest(dds)
   vsd <- varianceStabilizingTransformation(dds, blind = TRUE)
   pca_data <- plotPCA(vsd, intgroup = c("condition", 'rep'), returnData = TRUE)
-  percentVar <- round(100 * attr(pca_data, "percentVar"))
   return(pca_data)
 }
 
@@ -135,14 +133,15 @@ pca_cnr_spike_in <- function(peaks, ab, sf) {
 k4me3_pca_csaw <- pca_cnr_csaw(k4me3, 'H3K4me3')
 percentVar_csaw <- round(100 * attr(k4me3_pca_csaw, "percentVar"))
 
-k4me3_pca_barcodes <- pca_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes)
+k4me3_pca_barcodes <- pca_cnr_spike_in(k4me3, 'H3K4me3', sf_barcodes) # barcode spike-ins
 percentVar_barcodes <- round(100 * attr(k4me3_pca_barcodes, "percentVar"))
 
-k4me3_pca_ecoli <- pca_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli)
+k4me3_pca_ecoli <- pca_cnr_spike_in(k4me3, 'H3K4me3', sf_ecoli) # e. coli spike ins
 percentVar_ecoli <- round(100 * attr(k4me3_pca_ecoli, "percentVar"))
 
 ################################################################################
-# graph PCA data
+# Graph PCA data
+
 # csaw
 ggplot(k4me3_pca_csaw, aes(PC1, PC2, label = k4me3_pca_csaw$group, color = condition)) +
   geom_point(size = 4) +
