@@ -1,6 +1,7 @@
 # MA plot
+library(DESeq2)
 
-# load in data
+# Load data
 
 k4me3_res_csaw <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_csaw.tsv')
 k4me3_res_barcodes <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_barcodes.tsv')
