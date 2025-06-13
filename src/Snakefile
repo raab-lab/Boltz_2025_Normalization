@@ -3,6 +3,7 @@ import pandas as pd
 
 # Align samples to e. coli genome to count e. coli spike-in reads
 # Snakefile sample sheet (first row: Sample, next rows the name of the samples) 
+
 SS = pd.read_csv("/proj/jraablab/users/jlboltz/Normalization/snakefile_samples.csv").set_index("Sample", drop = False)
 
 
