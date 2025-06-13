@@ -17,7 +17,7 @@ nextflow run raab-lab/cut-n-run \
 		-w /work/users/j/l/jlboltz \
 		--outdir /proj/jraablab/users/jlboltz/Normalization \
 		-with-report \
-		-N jlboltz@unc.edu \
+		-N jlboltz@unc.edu \ # emails a report
 		-latest \
 		-ansi-log false \
 		-resume
