@@ -73,7 +73,7 @@
 
 # template loop begin 
 ## Expects Raab lab style sample sheet with Read 1 in the 8th column and Read 2 in the 9th
-# can only run one of the R1/R2 at a time
+# can only run one of the R1/R2 at a time, which is why R2 is commented out
 # the 'BARCODES' is a text file that just lists the above barcode sequences (just the sequences not the names, only one colum)
 
 SAMPLESHEET='/proj/jraablab/users/jlboltz/Normalization/norm_ss.csv'
@@ -82,7 +82,7 @@ BARCODES='/proj/jraablab/users/pkuhlers/seq_resources/spikein_barcodes.txt'
 awk -F ',' 'NR>1{print $8}' $SAMPLESHEET | \ 
 	parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R1_spikein_counts.txt
 
-awk -F ',' 'NR>1{print $9}' $SAMPLESHEET  | \
+# awk -F ',' 'NR>1{print $9}' $SAMPLESHEET  | \
 	parallel -j12 --tag -a $BARCODES -a - zgrep -c > /proj/jraablab/users/jlboltz/Normalization/R2_spikein_counts.txt
 
 # template loop end ##
