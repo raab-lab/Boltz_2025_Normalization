@@ -20,7 +20,7 @@ write_tsv(merged |> as_tibble(), file = '/proj/jraablab/users/jlboltz/Normalizat
 # plot merged data
 
 # barcodes vs. csaw method
-graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = rownames(merged), color = padj.x < 0.05 & padj.y < 0.05)) +
+graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, color = padj.x < 0.05 & padj.y < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of csaw normalization") +
   ylab("log2FoldChange of barcode spike-in normalization") +
@@ -30,7 +30,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange.y, label = 
 graph
 
 # e. coli vs. csaw method
-graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = rownames(merged), color = padj.x < 0.05 & padj < 0.05)) +
+graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, color = padj.x < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of csaw normalization") +
   ylab("log2FoldChange of ecoli spike-in normalization") +
@@ -40,7 +40,7 @@ graph <- ggplot(merged, aes(x = log2FoldChange.x, y = log2FoldChange, label = ro
 graph
 
 # e. coli vs. barcodes method
-graph <- ggplot(merged, aes(x = log2FoldChange.y, y = log2FoldChange, label = rownames(merged), color = padj.y < 0.05 & padj < 0.05)) +
+graph <- ggplot(merged, aes(x = log2FoldChange.y, y = log2FoldChange, color = padj.y < 0.05 & padj < 0.05)) +
   geom_point() +
   xlab("log2FoldChange of barcode spike-in normalization") +
   ylab("log2FoldChange of ecoli spike-in normalization") +
