@@ -24,7 +24,7 @@ venn.plot <- venn.diagram(
   fill = c("lightblue", "lightyellow", "maroon"),
   alpha = 0.5,
   cat.cex = 1.5,
-  main = "Significant Peaks between Normalization Methods"
+  main = "Significant Peaks Shared Between Normalization Methods"
 )
 grid::grid.newpage()
 grid::grid.draw(venn.plot)
