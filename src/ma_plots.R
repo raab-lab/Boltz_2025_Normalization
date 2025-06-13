@@ -9,6 +9,8 @@ k4me3_res_ecoli <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_re
 
 ################################################################################
 
+# Standard MA plots
+
 # CSAW 
 k4me3_des_csaw_shrink <- lfcShrink(k4me3_des_csaw, coef = 2, type = 'apeglm') 
 plotMA(k4me3_des_csaw_shrink, ylim = c(-5, 5), main = "CSAW MA Plot")
@@ -22,7 +24,8 @@ k4me3_des_ecoli_shrink <- lfcShrink(k4me3_des_ecoli, coef = 2, type = 'apeglm')
 plotMA(k4me3_des_ecoli_shrink, ylim = c(-5, 5), main = "Ecoli MA Plot")
 
 ################################################################################
-# alternative MA plot that highlights significant upregulated peaks in red and downregulated in blue
+
+# Alternative MA plot that highlights significant upregulated peaks in red and downregulated in blue
 
 res_df <- as.data.frame(k4me3_des_csaw_shrink)
 res_df$regulation <- "Not significant"
