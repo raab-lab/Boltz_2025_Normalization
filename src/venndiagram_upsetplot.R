@@ -135,13 +135,11 @@ dev.off()
 ################################################################################
 # Upset plot for negative significant peaks
 
-# Load data
 merged_real <- read_tsv(
   '/proj/jraablab/users/jlboltz/Normalization/merged_id.tsv',
   show_col_types = FALSE
 )
 
-# Clean and prepare data
 cleaned_data <- merged_real %>%
   select(ID, padj.x, padj.y, padj,
          log2FoldChange.x, log2FoldChange.y, log2FoldChange) %>%
@@ -156,7 +154,6 @@ cleaned_data <- merged_real %>%
   ) %>%
   distinct(ID, .keep_all = TRUE)
 
-# Create UpSet input (ONLY binary columns)
 upset_data <- cleaned_data %>%
   transmute(
     CSAW = as.integer(padj.x < 0.05 & log2FoldChange.x < 0),
@@ -165,10 +162,6 @@ upset_data <- cleaned_data %>%
   ) %>%
   as.data.frame()
 
-# Sanity check (should all be 0)
-print(colSums(is.na(upset_data)))
-
-# Save plot
 png(
   filename = "Negative_Upset_Significant_Peaks.png",
   width = 2000,
@@ -186,13 +179,11 @@ dev.off()
 ################################################################################
 # Upset plot for positive significant peaks
 
-# Load data
 merged_real <- read_tsv(
   '/proj/jraablab/users/jlboltz/Normalization/merged_id.tsv',
   show_col_types = FALSE
 )
 
-# Clean and prepare data
 cleaned_data <- merged_real %>%
   select(ID, padj.x, padj.y, padj,
          log2FoldChange.x, log2FoldChange.y, log2FoldChange) %>%
@@ -207,7 +198,6 @@ cleaned_data <- merged_real %>%
   ) %>%
   distinct(ID, .keep_all = TRUE)
 
-# Create UpSet input (ONLY binary columns)
 upset_data <- cleaned_data %>%
   transmute(
     CSAW = as.integer(padj.x < 0.05 & log2FoldChange.x > 0),
@@ -216,10 +206,6 @@ upset_data <- cleaned_data %>%
   ) %>%
   as.data.frame()
 
-# Sanity check (should all be 0)
-print(colSums(is.na(upset_data)))
-
-# Save plot
 png(
   filename = "Positive_Upset_Significant_Peaks.png",
   width = 2000,
