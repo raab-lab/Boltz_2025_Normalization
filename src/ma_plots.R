@@ -29,8 +29,8 @@ plotMA(k4me3_des_ecoli_shrink, ylim = c(-5, 5), main = "Ecoli MA Plot")
 
 res_df <- as.data.frame(k4me3_des_csaw_shrink)
 res_df$regulation <- "Not significant"
-res_df$regulation[res_df$padj < 0.05 & res_df$log2FoldChange > 0] <- "Upregulated"
-res_df$regulation[res_df$padj < 0.05 & res_df$log2FoldChange < 0] <- "Downregulated"
+res_df$regulation[res_df$padj < 0.01 & res_df$log2FoldChange > 0] <- "Upregulated"
+res_df$regulation[res_df$padj < 0.01 & res_df$log2FoldChange < 0] <- "Downregulated"
 
 # Plot using ggplot2
 ggplot(res_df, aes(x = baseMean, y = log2FoldChange, color = regulation)) +
