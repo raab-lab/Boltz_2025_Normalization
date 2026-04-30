@@ -2,7 +2,7 @@
 library(DESeq2)
 
 # Load data
-
+load("/proj/jraablab/users/jlboltz/Normalization/k4me3_cnr_peaks.Rda")
 k4me3_res_csaw <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_csaw.tsv')
 k4me3_res_barcodes <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_barcodes.tsv')
 k4me3_res_ecoli <- read_tsv('/proj/jraablab/users/jlboltz/Normalization/k4me3_res_ecoli.tsv')
